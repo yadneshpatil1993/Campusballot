@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<div class="col-lg-9 main-chart">
+                {% block content %}
+                <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                                    
+                          <fieldset>
+                            <legend>Question List</legend>
+                            <div class="form-group">
+                              <!-- <label class="col-lg-2 control-label">Group Name</label> -->
+                              <div class="row">
+                              
+                                    <div class="col-lg-4">
+                                    <h5 class="icon-color">Common Questions</h5>
+                                      <select class="form-control addmembers" multiple>
+                                       {% for i in questions_all %}   <option value="">{{i.question}}</option>
+                                       {% endfor %}
+                                      </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <h5 class="icon-color">Female Questions</h5>
+                                      <select class="form-control addmembers" multiple>
+                                       {% for i in questions_female %}   <option value="">{{i.question}}</option>
+                                       {% endfor %}
+                                      </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <h5 class="icon-color">Male Questions</h5>
+                                      <select class="form-control addmembers" multiple>
+                                       {% for i in questions_male %}   <option value="">{{ i.question }}</option>
+                                       {% endfor %}
+                                      </select>
+                                    </div>
+                              
+                              </div>
+                            </div>
+                            
+                          </fieldset>
+                        </form>
+                  </div>
+            </div>
+                        {% endblock %}                                  
+</div><!-- /col-lg-9 END SECTION MIDDLE -->

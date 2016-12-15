@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<div class="row">
+         <div class="col-md-6 col-md-offset-2"> 
+          <div class="form-group">
+            <select id="qn" class="form-control">
+              <option value="">Select Type of Question</option>
+              {% for i in allqn %}
+              <option value="{{i.qn_id.id }}">{{i.qn_id.question}}</option>
+              {% endfor %}
+             </select>​
+           </div>
+          </div>
+          <div class="col-md-3">
+            <button type="submit" id="submit"class="btn btn-warning">Submit</button>  
+          </div>
+</div>
+<div class="row">           
+                {% include 'ballot/leaderboard_load.html' %} 
+</div>         
+    
+ 

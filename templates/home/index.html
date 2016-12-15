@@ -1,0 +1,137 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Fun enjoy campusballot campus college friends group  rating ranks voting vote">
+        <meta name="author" content="campusballot">
+        <link rel="shortcut icon" href="{% static "images/favicon.png" %}" />
+
+
+    {% if login %}
+        <title>Home | campusballot</title>
+    {% elif signup %}
+        <title>Signup | campusballot</title>
+    {% elif reset_password %}
+        <title>Reset Password | campusballot</title>
+    {% endif %}
+
+        <!--Core CSS -->
+       <!-- Bootstrap core CSS -->
+        <link href="{% static "dist/css/bootstrap.css" %}" rel="stylesheet">
+        <link href="{% static "dist/css/bootstrap.min.css"%}" rel="stylesheet">
+         <link href="{% static "assets/font-awesome/css/font-awesome.css" %}" rel="stylesheet" />
+    
+        <!-- customize style sheets -->
+        <link href="{% static "home/css/style.css"%}" rel="stylesheet">
+            <!-- common js  -->
+  
+    
+        
+</head>
+
+<body class="body-bg">
+            {% include 'home/navbar.html'%}
+                <br/><br/>  
+    <div class="container backimage">
+      <br/><br/>
+      <div class="row">
+            <div class="col-md-6 col-md-offset-4">
+             <h4>{{ state }}</h4> 
+           </div>
+      </div>
+      <div class="row">     
+            <div id="explore" class="col-md-6 col-md-offset-3 ">
+                  <br/><br/>
+                    {% include 'home/explore.html'%}
+                <div class="searchresult">    
+                  {% include 'home/explore_result.html'%}
+                </div>
+            </div>     
+            <div id="form1" class="col-md-5 col-md-offset-7"  style="display:none">
+                  {% include 'home/signup.html'%}
+            </div>
+            <div id="form2" class="col-md-5 col-md-offset-7"  style="display:none">
+                  {% include 'home/login.html'%}        
+            </div>
+            <div id="form3" class="col-md-6 col-md-offset-3" style="display:none">
+                  {% include 'home/reset_password.html'%}        
+            </div>
+          </div>
+      <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+                
+          </div>
+      </div>
+    </div>
+  </br>
+    <footer class="footer">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-4 col-offset-1">
+              Team | Terms and Conditions | Help | Feedback
+          </div>
+        </div>
+      </div>
+    </footer>      
+     <script src="{% static "dist/js/jquery-1.11.2.min.js" %}"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     <script src="{% static "dist/js/bootstrap.min.js" %}"></script>
+    
+</body>    
+
+</html>
+
+<script langauge="javascript">
+    function showForm1(){
+      document.getElementById('form2').style.display="none";  
+      document.getElementById('explore').style.display="none";
+      document.getElementById('form3').style.display="none";
+         
+    }
+
+    function showForm2(){
+      document.getElementById('form1').style.display="none";  
+      document.getElementById('explore').style.display="none";  
+      document.getElementById('form3').style.display="none";
+      
+    }
+    
+    function showForm3(){
+      document.getElementById('form1').style.display="none";  
+      document.getElementById('form2').style.display="none";  
+      document.getElementById('form3').style.display="none";
+    }
+
+    function showForm4(){
+      document.getElementById('form1').style.display="none";  
+      document.getElementById('form2').style.display="none";  
+      document.getElementById('explore').style.display="none";
+    }
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+       $("#search").keyup(function(){
+        var input = $("#search").val();
+        input     = $.trim(input);
+        $("#searchresult").html("");
+        if(input){
+          $.ajax({
+              url: "{% url 'group:load_organization'%}",
+              type: "POST",
+              data: {
+              'input' : input,
+              'csrfmiddlewaretoken': '{{ csrf_token }}',
+              },
+              dataType: 'html',
+               success: function(result){
+               $("#searchresult").html(result);
+          }});
+        }
+       });
+    });
+</script>   

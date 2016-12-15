@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<br/>
+<br/>
+<br/>
+
+<div class="col-lg-12">
+                {% block content %}
+                <div class="col-lg-10 col-lg-offset-1 ds">
+                  
+                    <h3>Suggested Questions</h3>
+                      {% if seesuggestions_list%}                 
+                      <!-- First Action -->
+                      {% for i in seesuggestions_list%}
+                      <div class="desc">
+                        <div class="thumb">
+                          <span class="badge bg-theme">{{forloop.counter}}</span>
+                        </div>
+                        <div class="details">
+                          <p><muted>Group :{{i.group_id.group_name}}</muted><br/>
+                             {{i.suggestion}} ({{i.get_gender_display}})
+                          </p>
+                        </div>
+                        <div class="thumb">
+                          <span class="badge bg-theme" title="Approve this question"><a href="{% url 'group:admin_approve_suggested_qn' i.id %}" onclick="return confirm('Are you sure you want to approve this suggestion ?');"> <i class="fa fa-check"></i></a></span>
+                        </div>
+                        <div class="thumb">
+                          <span class="badge bg-theme"  title="Reject this suggestion"><a href="{% url 'group:admin_delete_suggested_qn' i.id %}" onclick="return confirm('Are you sure you want to Delete this suggestion ?');"><i class="fa fa-times"></i></a></span>
+                        </div>
+                        
+                      </div>
+                      {% endfor %}
+                      {%else%}
+                        <div class="desc">
+                        <div class="thumb">
+                          <span class="badge bg-theme"></span>
+                        </div>
+                        <div class="details text-center">
+                          <p><muted>No suggestions</muted><br/>
+                          </p>
+                        </div>
+                      </div>
+                      {%endif%}
+    </div>
+            
+    
+                        {% endblock %}                                  
+</div><!-- /col-lg-9 END SECTION MIDDLE -->

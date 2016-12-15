@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<div class="col-lg-9 main-chart">
+                {% block content %}
+                <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                <form class="form-horizontal" action="{% url 'group:question_entry' %}" method="post">
+				  {% csrf_token %}
+				  {% if next %}
+						<input type="hidden" name="next" value="{{ next }}" />
+				  {% endif %}
+						
+				  <fieldset>
+				    <legend>Add Question</legend>
+				    <div class="form-group">
+				      <!-- <label class="col-lg-2 control-label">Group Name</label> -->
+				      <div class="row">
+				      <div class="col-lg-4">
+				      	<h5 class="icon-color">Common question</h5>
+				        <textarea class="addmembers" name="q_all" placeholder="Paste common question"></textarea>
+				      </div>
+				      <div class="col-lg-4">
+				      	<h5 class="icon-color">Female question</h5>
+				        <textarea class="addmembers" name="q_f" placeholder="Paste female question"></textarea>
+				      </div>
+				      <div class="col-lg-4">
+				      	<h5 class="icon-color">Male question</h5>
+				        <textarea class="addmembers" name="q_m" placeholder="Paste male question"></textarea>
+				      </div>
+				      </div>
+				    </div>
+				    <div class="form-group">
+				      <div class="col-lg-10 ">
+				        <button type="reset" class="btn btn-default">Cancel</button>
+				        <button type="submit" class="btn btn-primary">Submit</button>
+				      </div>
+				    </div>
+				  </fieldset>
+				</form>
+			</div>
+		</div>
+				{% endblock %}						
+</div><!-- /col-lg-9 END SECTION MIDDLE -->

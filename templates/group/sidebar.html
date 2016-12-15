@@ -1,0 +1,73 @@
+{% load staticfiles %}
+{% if viewgroup or addmembers or addqn or editgroup or editmembers%}
+<div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+                  <br />
+                  <a {% if viewgroup %}class="active"{%endif%} href="{% url 'group:view_group' group.id %}">
+                  <div class="centered">
+                    <i class="fa fa-users fa-5x icon-color"></i>
+                </div>
+                  <h5 class="centered">{{ group.group_name }}</h5>
+                  </a>
+                  <br />
+                  <br />
+                  <li class="sub-menu">
+                      <a {% if viewgroup %}class="active"{%endif%} href="{% url 'group:view_group' group.id %}">
+                          <i class="fa fa-users"></i>
+                          <span>Group Home</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a {% if editgroup %}class="active"{%endif%} href="{% url 'group:edit_group' group.id %}">
+                          <i class="fa fa-pencil-square-o"></i>
+                          <span>Edit Group Details</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a {% if addmembers %}class="active"{%endif%} href="{% url 'group:add_members' group.id %}">
+                          <i class="fa fa-plus"></i>
+                          <span>Add Members</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a {% if addqn %}class="active"{%endif%} href="{% url 'group:add_questions' group.id %}">
+                          <i class="fa fa-wrench"></i>
+                          <span>Add/Edit Questions</span>
+                      </a>
+                  </li>
+                                    
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+{% else %}
+<div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+                  <div class="centered">
+              	    <i class="fa fa-user fa-5x icon-color"></i>
+                </div>
+              	  <h5 class="centered">{{ username }}</h5>
+              	  <br/>	
+                  <li class="sub-menu">
+                      <a {% if creategroup %}class="active"{%endif%} href="{% url 'group:create_group' %}">
+                          <i class="fa fa-plus"></i>
+                          <span>Create Group</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a {% if suggestions %}class="active"{%endif%} href="{% url 'group:suggestions_load' %}">
+                          <i class="fa fa-comment"></i>
+                          <span>View Suggestions</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a {% if changepassword %}class="active"{%endif%} href="{% url 'group:change_password' %}">
+                          <i class="fa fa-wrench"></i>
+                          <span>Change Password</span>
+                      </a>
+                  </li>                  
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+{% endif %}          

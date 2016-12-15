@@ -1,0 +1,71 @@
+{% load staticfiles %}
+                   <br />
+                   <br />     
+                  <div class="row text-center">
+                      <div class="col-md-5 col-md-offset-3">
+                        <h4>{{state}}</h4>
+                        <h2 class="text-center">{{ group.group_name}}</h2>
+                        <h3 class="text-center">Total members:{{membercount}}</h3>
+                      </div>
+                      <div class="col-md-3">
+                            <br />
+                            <a href="{% url 'group:delete_group' group.id %}" class="confirmation btn btn-danger btn-xs">Delete Group</a>
+
+                            {% if group.is_active %}
+                              <a href="{% url 'group:disable_group' group.id %}" class="confirmation btn btn-danger btn-xs">Disable Group</a>
+                            {%else%}
+                              <a href="{% url 'group:disable_group' group.id %}"  class="confirmation btn btn-success btn-xs">Enable Group</a>
+                            {% endif %}
+                        </div>
+                  </div>
+                  <div class="row">
+                       <div class="col-md-8 col-md-offset-1">
+                                  {% if membercount >= 5 and questionset %}
+                                        <h4>Your link for voting is here :<a href="{% url 'group:ballot_home' group.id %}" class="btn btn-warning btn-xs"target="_blank"> www.campusballot.com{% url 'group:ballot_home' group.id %}</a></h4>
+
+                                  {% else %}
+                                        <p>To get your link Add more than 5 members and add </br>atleast one question to the group.</p>
+                                  {% endif %}                              
+                       </div>
+                       
+                  </div>
+                  <br />
+                  <div class="row">
+                        <div class="col-md-10 col-md-offset-1 text-center">
+                        <table class="table table-striped " border="2" bordercolor="#eeeeee" >
+                                    <thead bgcolor="#222222">
+                                               <tr>
+                                          <th class="text-center color-w">No.</th>
+                                          <th class="text-center color-w">Name</th>
+                                          <th class="text-center color-w">Gender</th>
+                                          <th class="text-center color-w">Edit</th>
+                                          <th class="text-center color-w">Delete</th>
+                                          
+                                    </tr>
+                              </thead>
+                              <tbody>
+                                    {% for i in members_list %}     
+                                    <tr>
+                                          <td>
+                                                {{forloop.counter }}
+                                          </td>           
+                                          <td>
+                                                {{i.name }}
+                                          </td>           
+                                          <td>
+                                                {{i.get_gender_display}}
+                                          </td>           
+                                          <td>
+                                               <a href="{% url 'group:edit_members' group.id i.id %}"><i class="fa fa-edit"></i></a>
+                                          </td>
+                                          <td>
+                                                <a href="{% url 'group:delete_members' group.id i.id %}" class="color-red confirmation"><i class="fa fa-times"></i></a>
+                                   
+                                          </td>           
+                                    </tr>
+                                    {% endfor %}
+                              </tbody>
+                        </table>            
+                  	</div>
+                        </div>
+

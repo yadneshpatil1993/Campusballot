@@ -1,0 +1,91 @@
+
+.body-bg{
+	background-color: rgba(222, 217, 217, 0.34);
+}
+.backimage{
+	background-image: url("../../images/back.jpg");
+	background-repeat: no-repeat;
+	width: 100%!important;
+	height:530px;
+	margin-top:0px;
+	background-color: #EEE;
+}
+.login-panel{
+	background-color:  rgba(252, 251, 251, 0.71);
+}
+.result-font{
+	color: rgb(50,50,50)!important;
+	text-decoration: none!important;
+	font-weight: 800;
+}
+.searchresult{
+		overflow-y:scroll!important;
+		max-height: 200px!important;
+		/*margin-left:  31.333333%!important;*/
+}
+.searchresult::-webkit-scrollbar{
+		width:10px!important;
+}
+.searchresult::-webkit-scrollbar-thumb{
+		background-color:rgba(51, 51, 51, 1)!important;
+		border-radius:5px!important;
+}
+.form-titles{
+	color: rgba(81, 64, 64, 1)!important;
+	font-size: 16px!important;
+}
+.search-box{
+	background-color: rgba(255, 255, 255, 0.54)!important;
+	border: 1px solid rgba(168, 167, 167, 0.0)!important;
+	height: 60px!important;
+	font-size: 20px!important;
+}
+input.empty {
+    font-family: FontAwesome!important;
+    font-style: normal!important;
+    font-weight: normal!important;
+    text-decoration: inherit!important;
+}
+.themecolor{
+	background-color: rgba(255, 103, 1, 0.77)!important;
+	border-color: rgba(255, 117, 24, 0.11)!important;
+}
+.icon-color{
+	color:  #F8893E!important;
+}
+.color-w{
+	color: white!important;
+}
+.color-red{
+	color: red!important;
+}
+.navbar{
+    position: fixed!important;
+    left: 0!important;
+    right: 0!important;
+    z-index: 2002!important;
+}
+.wordwrap{
+	word-wrap: break-word;
+}
+.addmembers {
+    color:rgb(10,10,10);
+    max-height:300px;
+    min-height:300px;
+    width: 100%; 
+    resize: none;
+    font-size: 20px;
+}
+.modalabove{
+	z-index:5000!important;
+}
+.modal-header{
+	background-color: #222222!important;
+}
+.addqn{
+	max-height:400px!important; 
+	overflow-y: scroll!important;
+}
+.login-btn{
+	width: 300px!important;
+}

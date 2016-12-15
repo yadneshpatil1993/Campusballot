@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<div class="col-md-12 col-md-offset-0" style="color:rgb(0,0,0)">        
+
+             <div id="leaderboard">
+                  <h2 class="text-center">{{q.question}}</h2>
+              <!--leaderboard-->
+                  <table height="auto" border="4" bordercolor="#F8893E" style="text-align:center ;align:center ; border:2 ;width:100% ; id:table1 ; font-size:16px">
+                    <thead style="height:15px; color:rgb(250,250,250)" bgcolor="#F8893E"><!--#00bc8c and #23B3CD-->
+                      <tr>
+                        <td width="170" height="60">Rank</td>
+                        <td width="350">Name</td>
+                        <td width="350">Rating</td>
+                      </tr>
+                    </thead>
+                    <tbody style="height:auto">
+                      {% for i in leaderboard_list %}
+                      <tr style="background-color:rgb(250,250,250)">
+                        <td width="67" height="42">{{ forloop.counter }}</td>
+                        <td width="196">{{i.member_id.name}}</td>
+                        <td width="97">{{i.rating}}</td>
+                      </tr>
+                      {% endfor %}       
+                  </table> 
+                </div>  
+     </div>           

@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<div id="question">
+<div class="row" style="text-align:center">
+        <div class="col-md-12" style="text-align:center">
+         <input type="hidden" id="q" value="{{q.id}}"/>
+         <h3>{{ q.question }}</h3>     
+        </div>
+      </div>  
+      <br />
+      <div class="row">
+      </div>
+      <br />
+
+      <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+            <button class="btn btn-warning btn-lg btn-block" id="o1" type="submit" name="vote" value="1">{{ o1.name }}</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-warning btn-lg btn-block" id="o2" type="submit" name="vote" value="2">{{ o2.name }}</button>
+          </div>  
+      </div>
+      <br />
+      <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+            <button class="btn btn-warning btn-lg btn-block" id="o3" type="submit" name="vote" value="3">{{ o3.name }}</button>
+          </div>  
+          <div class="col-md-4">
+            <button class="btn btn-warning btn-lg btn-block" id="o4" type="submit" name="vote" value="4">{{ o4.name }}</button>
+          </div>  
+      </div>
+      <br />
+      <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <button class="btn btn-warning btn-lg btn-block" id="o5" type="submit" name="vote" value="0">None of the above</button>
+          </div>  
+      </div>
+      
+</div>

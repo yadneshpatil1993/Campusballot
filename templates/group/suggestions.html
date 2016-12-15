@@ -1,0 +1,82 @@
+    </br></br></br>   
+    <h4>{{state}}</h4>   
+    <div class="col-lg-5 col-lg-offset-1 ds">
+                  
+                    <h3>Suggested Questions</h3>
+                      {% if suggested_questions%}                 
+                      <!-- First Action -->
+                      {% for i in suggested_questions%}
+                      <div class="desc">
+                        <div class="thumb">
+                          <span class="badge bg-theme">{{forloop.counter}}</span>
+                        </div>
+                        <div class="details">
+                          <p><muted>Group :{{i.group_id.group_name}}</muted><br/>
+                             {{i.suggestion}}
+                          </p>
+                        </div>
+                        <div class="thumb">
+                          <span class="badge bg-theme" title="Approve this question"><a href="{% url 'group:approve_suggested_qn' i.id %}" onclick="return confirm('Are you sure you want to approve this suggestion ?');"> <i class="fa fa-check"></i></a></span>
+                        </div>
+                        <div class="thumb">
+                          <span class="badge bg-theme"  title="Reject this suggestion"><a href="{% url 'group:delete_suggested_qn' i.id %}" onclick="return confirm('Are you sure you want to Delete this suggestion ?');"><i class="fa fa-times"></i></a></span>
+                        </div>
+                        
+                      </div>
+                      {% endfor %}
+                      {%else%}
+                        <div class="desc">
+                        <div class="thumb">
+                          <span class="badge bg-theme"></span>
+                        </div>
+                        <div class="details text-center">
+                          <p><muted>No suggestions</muted><br/>
+                          </p>
+                        </div>
+                      </div>
+                      {%endif%}
+    </div>
+            
+                        
+                            
+                        
+    <div class="col-lg-5 col-lg-offset-1 ds">
+                  
+                    <h3>Suggested Members</h3>
+                       {% if suggested_members%}                                   
+                      <!-- First Action -->
+                      {% for i in suggested_members%}
+                      <div class="desc">
+                        <div class="thumb">
+                          <span class="badge bg-theme">{{forloop.counter}}</span>
+                        </div>
+                        <div class="details">
+                          <p><muted>Group :{{i.group_id.group_name}}</muted><br/>
+                             {{i.suggestion}} ({{i.get_gender_display}})
+                          </p>
+                        </div>
+                        <div class="thumb">
+                          <a href="{% url 'group:approve_suggested_member' i.id %}" onclick="return confirm('Are you sure you want to approve this suggestion ?');"> 
+                          <span class="badge bg-theme"><i class="fa fa-check"></i></span></a>
+                        </div>
+                        <div class="thumb"><a href="{% url 'group:delete_suggested_member' i.id %}" onclick="return confirm('Are you sure you want to Delete this suggestion ?');">
+                          <span class="badge bg-theme"><i class="fa fa-times"></i></span></a>
+                        </div>
+                        
+                      </div>
+                      {% endfor %}
+                      {%else%}
+                        <div class="desc">
+                        <div class="thumb">
+                          <span class="badge bg-theme"></span>
+                        </div>
+                        <div class="details text-center">
+                          <p><muted>No suggestions</muted><br/>
+                          </p>
+                        </div>
+                      </div>
+                      {%endif%}
+    </div>
+            
+                        
+                    

@@ -1,0 +1,13 @@
+{% load staticfiles %}
+	        <fieldset>
+            <div class="form-group">
+            	<div id="searchresult">
+            	{% for i in search_result%}
+                          <a href="{% url 'group:ballot_home' i.id %}">
+      	                    	<span  class="form-control search-box">{{i.group_name}}</span>
+                          </a>
+               {% endfor %}                         	
+                </div>
+             </div>
+          </fieldset>
+                      

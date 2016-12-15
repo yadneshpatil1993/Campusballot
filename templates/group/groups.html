@@ -1,0 +1,51 @@
+{% load staticfiles %}
+
+<div class="row">
+<br /><br /><br />
+
+                        	{% if group_list %}
+                              <div class="col-md-10 col-md-offset-1 wordwrap text-center">
+                                    <h2 class="text-center">My Groups</h2>
+
+                                    <table class="table table-striped " bordercolor="#222222" >
+                                      <thead bgcolor="#222222">
+                                        <tr >
+                                          <th class="text-center color-w">No</th>
+                                          <th class="text-center color-w">Group Name</th>
+                                          <th class="text-center color-w">Organization Name</th>
+                                          <th class="text-center color-w">Total Members</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                           {% for group_id in group_list %}
+                                                <tr>
+                                                      <td>{{forloop.counter}}</td>
+                                                      <td>
+                                                      <a href="{% url 'group:view_group' group_id.id %}">     
+                                                            {{ group_id.group_name }}
+                                                      </a>  
+                                                      </td>
+                                                      <td>{{ group_id.org_name }}</td>
+                                                      <td>{{ group_id.female_count|add:group_id.male_count }}</td>
+                                                </tr>         
+                                              
+                                           {% endfor %}     
+                                      </tbody>
+                                      </table>    
+                                           
+                              </div>            
+                                     
+                              {% else %}
+                                    <br /><br /><br />
+                                    <div class="col-md-6">
+                                           <a href="{% url 'group:create_group' %}">
+                                              <button class="btn btn-lg btn-warning btn-block"><i class="fa fa-plus "> Create Group</i>
+                                                </button>
+                                              
+                                    </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <button class="btn btn-lg btn-warning btn-block" data-toggle="modal" data-target="#myModal" data-local="#myCarousel">Follow the Instructions</button>
+                                  </div>
+                              {% endif %}						
+</div><!-- /col-lg-9 END SECTION MIDDLE -->

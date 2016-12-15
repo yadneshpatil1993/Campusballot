@@ -1,0 +1,31 @@
+{% load staticfiles %}
+	    <form class="form-horizontal form-titles jumbotron login-panel" action="{% url 'group:login' %}" method="post"> 
+          {% csrf_token %}
+          {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+          {% endif %}
+            
+          <fieldset>
+            <legend>Login</legend>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Username</label>
+              <div class="col-lg-9">
+                <input type="text" name="username"class="form-control" required placeholder="Username" value="{{ username}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-3 control-label">Password</label>
+              <div class="col-lg-9">
+                <input type="password" name="password" required class="form-control" id="inputPassword" placeholder="Password" value="">
+              </div>
+              <a href="#" onclick="$('#form3').toggle();showForm4();"><span class="col-lg-6 col-lg-offset-0">forgot Password ?</span></a> 
+            
+            </div>
+            <div class="form-group">
+              <div class="col-lg-9 col-lg-offset-3">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-warning">Login</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>

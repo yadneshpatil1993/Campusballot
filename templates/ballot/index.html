@@ -1,0 +1,213 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>campusballot</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "dist/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "dist/css/bootstrap.min.css"%}" rel="stylesheet">
+    <link href="{% static "home/css/style.css"%}" rel="stylesheet">
+        
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+  </head>
+
+  <body class="body-bg">
+    {% include 'ballot/navbar.html'%}
+            
+     <div class="container">
+      <div class="row">
+        
+        <div class="col-md-9 col-sm-9 col-lg-9" >
+              <br />
+              <div class="row">
+                        <div class="col-md-6 col-md-offset-3 text-center">
+                            <h2>{{ group.group_name }}</h2>
+                        </div>
+              </div>
+            {% if group.is_active %}
+                  {% if question %}
+                              {% include 'ballot/question.html' %}
+                  {% elif leaderboard %}
+                              {% include 'ballot/leaderboard.html' %}            
+                  {% elif suggestion %}
+                              {% include  'ballot/suggest.html' %}            
+                  {% endif %} 
+            {% else %}
+              <h2>{{group.group_name}}</h2>
+              <h2>{{state}}</h2>
+            {% endif %}
+        </div>
+        <div class="col-md-3 col-sm-3 col-lg-3" >
+            <div class="row">
+                <div class="col-md-9 col-md-offset-2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9 col-md-offset-2">
+                    <h3></h3>
+
+                </div>
+            </div>
+        </div>
+      </div>             
+   </div>
+   <br />
+   <br />
+   <br />
+  
+                    {% include 'group/footer.html' %}
+
+ <!-- common js  -->
+     <script src="{% static "dist/js/jquery-1.11.2.min.js" %}"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     <script src="{% static "dist/js/bootstrap.min.js" %}"></script>
+    
+  </body>
+ </html>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+      // lederboard ajax
+       $("#submit").click(function(){
+        var q_id = $("#qn").val();
+        q_id     = $.trim(q_id);
+        $("#leaderboard").html("");
+        if(q_id){
+          $.ajax({
+              url: "{% url 'group:load_leaderboard'%}",
+              type: "POST",
+              data: {
+              'q_id' : q_id,
+              'group_id' : '{{group.id}}',
+              'csrfmiddlewaretoken': '{{ csrf_token }}',
+              },
+              dataType: 'html',
+               success: function(result){
+               $("#leaderboard").html(result);
+          }});
+        }
+       });
+
+       //questions ajax
+       $(".container").on("click", "#o1", function(){
+        var o_id = $("#o1").val();
+        var q = $("#q").val(); 
+        o_id     = $.trim(o_id);
+        if(o_id){
+          $.ajax({
+              url: "{% url 'group:ballot_update'%}",
+              type: "POST",
+              data: {
+              'vote' : o_id,
+              'group_id' : '{{group.id}}',
+              'q' : q,
+              'csrfmiddlewaretoken': '{{ csrf_token }}',
+              },
+              dataType: 'html',
+               success: function(result){
+               $("#question").html(result);
+          }});
+        }
+       });
+
+       $(".container").on("click", "#o2", function(){
+        var o_id = $("#o2").val();
+        var q = $("#q").val(); 
+        o_id     = $.trim(o_id);
+        if(o_id){
+          $.ajax({
+              url: "{% url 'group:ballot_update'%}",
+              type: "POST",
+              data: {
+              'vote' : o_id,
+              'group_id' : '{{group.id}}',
+              'q' : q,
+              'csrfmiddlewaretoken': '{{ csrf_token }}',
+              },
+              dataType: 'html',
+               success: function(result){
+               $("#question").html(result);
+          }});
+        }
+       });
+       
+
+       $(".container").on("click", "#o3", function(){
+        var o_id = $("#o3").val();
+        var q = $("#q").val(); 
+        o_id     = $.trim(o_id);
+        if(o_id){
+          $.ajax({
+              url: "{% url 'group:ballot_update'%}",
+              type: "POST",
+              data: {
+              'vote' : o_id,
+              'group_id' : '{{group.id}}',
+              'q' : q,
+              'csrfmiddlewaretoken': '{{ csrf_token }}',
+              },
+              dataType: 'html',
+               success: function(result){
+               $("#question").html(result);
+          }});
+        }
+       });
+       
+       $(".container").on("click", "#o4", function(){
+        var o_id = $("#o4").val();
+        var q = $("#q").val(); 
+        o_id     = $.trim(o_id);
+        if(o_id){
+          $.ajax({
+              url: "{% url 'group:ballot_update'%}",
+              type: "POST",
+              data: {
+              'vote' : o_id,
+              'group_id' : '{{group.id}}',
+              'q' : q,
+              'csrfmiddlewaretoken': '{{ csrf_token }}',
+              },
+              dataType: 'html',
+               success: function(result){
+               $("#question").html(result);
+          }});
+        }
+       });
+       
+       $(".container").on("click", "#o5", function(){
+        var o_id = $("#o5").val();
+        var q = $("#q").val(); 
+        o_id     = $.trim(o_id);
+        if(o_id){
+          $.ajax({
+              url: "{% url 'group:ballot_update'%}",
+              type: "POST",
+              data: {
+              'vote' : o_id,
+              'group_id' : '{{group.id}}',
+              'q' : q,
+              'csrfmiddlewaretoken': '{{ csrf_token }}',
+              },
+              dataType: 'html',
+               success: function(result){
+               $("#question").html(result);
+          }});
+        }
+       });
+       
+
+    });
+</script>    

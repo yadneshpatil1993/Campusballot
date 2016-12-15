@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'group:login' %}">CAMPUS BALLOT</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#" onclick="$('#explore').toggle();showForm3();">Explore</a></li>
+                  <li><a href="#" onclick="$('#form1').toggle();showForm1();">Sign Up</a></li>
+                  <li><a href="#" onclick="$('#form2').toggle();showForm2();">Login</a></li>
+               
+                </ul>
+              </div>
+            </div>
+          </nav>
